@@ -1,25 +1,45 @@
 const express = require("express");
-const ejs = require("ejs");
+const {
+  getData,
+  updateCourse,
+  insertCourse,
+  deleteCourse,
+} = require("./database/courseDB");
+// const updateCourse = require("./database/courseDB");
 
-//common Code
+const app = express();
 const PORT = 5000;
 
-// # Basic Server
-const app = express();
+app.use(express.json());
 
-app.set("view engine", "ejs");
-// Home Page
-app.get("", (req, res) => {
-  res.render("index");
+app.post("/course", async (req, res) => {
+  const result = await insertCourse(req.body);
+  res.send({
+    message: result,
+  });
 });
 
-app.get("/user", (req, res) => {
-  res.render("user", { user: "Ali Khan Baba" });
+app.get("/course", async (req, res) => {
+  const result = await getData();
+  res.send({
+    courses: result,
+  });
 });
-// 404
-app.get("*", (req, res) => {
-  res.send("<p>Page is Not Found 404</p>");
+
+app.put("/course/:id", async (req, res) => {
+  const result = await updateCourse(req.params.id, req.body);
+  res.send({
+    message: result,
+  });
 });
+
+app.delete("/course/:id", async (req, res) => {
+  const result = await deleteCourse(req.params.id);
+  res.send({
+    message: result,
+  });
+});
+
 app.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
