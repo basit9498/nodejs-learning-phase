@@ -1,0 +1,18 @@
+.nav {
+  background-color: #4d4dd3;
+  padding: 12px;
+}
+
+.nav ul {
+  display: flex;
+}
+.nav ul li {
+  list-style: none;
+  margin-right: 12px;
+}
+nav ul li a {
+  text-decoration: none;
+}
+.nav ul li a:hover {
+  color: #fff;
+}
