@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/main.css" />
+    <link rel="stylesheet" href="/style/addproduct.css" />
+  </head>
+  <body>
+    <%- include("../layout/headerNav.ejs") %>
+    <h1>Add Product</h1>
+    <div class="form-div">
+      <form action="/admin/product" method="post">
+        <div class="form-gp">
+          <label>Sku</label>
+          <input name="sku" />
+        </div>
+        <div class="form-gp">
+          <label>Name</label>
+          <input name="name" />
+        </div>
+        <div class="form-gp">
+          <label>Price</label>
+          <input name="price" />
+        </div>
+        <div class="form-btn">
+          <button>Add Product</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

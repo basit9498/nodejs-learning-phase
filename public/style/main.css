@@ -1,18 +1,19 @@
-.nav {
-  background-color: #4d4dd3;
-  padding: 12px;
+.header-nav {
+  background-color: rgb(192, 148, 234);
+  padding: 4px;
 }
-
-.nav ul {
+.nav-div ul {
   display: flex;
 }
-.nav ul li {
+
+.nav-div ul li {
   list-style: none;
-  margin-right: 12px;
+  margin-right: 20px;
 }
-nav ul li a {
+.nav-div ul li a {
   text-decoration: none;
 }
-.nav ul li a:hover {
-  color: #fff;
+.nav-div ul li a:hover,
+.nav-div ul li .active {
+  color: aliceblue;
 }

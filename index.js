@@ -1,19 +1,25 @@
 const express = require("express");
-const bodyParse = require("body-parser");
 const path = require("path");
-
-const adminRoute = require("./Moule5/routes/admin");
-const shopRoute = require("./Moule5/routes/shop");
+const bodyParse = require("body-parser");
+const errorController = require("./controller/errorController");
+const session = require("express-session");
+// local File import
+const adminRoute = require("./routes/adminRoutes");
+const shopRoute = require("./routes/shopRoute");
 
 const app = express();
 
-app.use(bodyParse.urlencoded({ extended: false }));
+// middleware
+app.use(bodyParse.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-app.use(shopRoute);
-app.use("/admin", adminRoute);
+app.use(session({ secret: "mykey", resave: false, saveUninitialized: false }));
+// engine working
+app.set("view engine", "ejs");
+app.set("views", "view");
 
-app.use("/", (req, res, next) => {
-  res.send("<h3>404 Page Not Founded</h3>");
-});
+app.use("/admin", adminRoute);
+app.use(shopRoute);
+
+app.use("/", errorController.pageNotFound);
 
 app.listen(5000);

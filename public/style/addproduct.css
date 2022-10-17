@@ -1,0 +1,12 @@
+.form-div {
+  width: 400px;
+  margin: auto;
+}
+.form-gp label {
+  display: block;
+  margin-bottom: 6px;
+}
+.form-gp input {
+  display: block;
+  margin-bottom: 10px;
+}
